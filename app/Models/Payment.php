@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Payment extends Model
 {
     use Companies;
-    
+
     protected $fillable = [
         'invoice_id',
         'amount',
@@ -23,7 +23,7 @@ class Payment extends Model
         'payment_method' => PaymentMethod::class,
     ];
 
-    public function invoice() : BelongsTo
+    public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
     }

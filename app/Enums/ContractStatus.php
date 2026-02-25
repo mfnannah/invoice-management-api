@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum ContractStatus: String
+enum ContractStatus: string
 {
     case DRAFT = 'draft';
     case ACTIVE = 'active';

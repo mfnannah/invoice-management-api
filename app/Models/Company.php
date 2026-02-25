@@ -12,8 +12,8 @@ class Company extends Model
         'owner_id',
     ];
 
-    public function owner() : BelongsTo
+    public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class,'owner_id');
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }

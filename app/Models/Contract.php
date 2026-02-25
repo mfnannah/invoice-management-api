@@ -18,13 +18,14 @@ class Contract extends Model
         'start_date',
         'end_date',
         'status',
-    ]; 
-        
+    ];
+
     protected $casts = [
         'status' => ContractStatus::class,
     ];
-        
-    public function invoices() : HasMany{
+
+    public function invoices(): HasMany
+    {
         return $this->hasMany(Invoice::class);
     }
 }

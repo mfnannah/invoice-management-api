@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained('companies')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('invoice_id')->constrained('invoices')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->decimal('amount',12,2)->default(0);
-            $table->enum('payment_method',['cash','bank_transfer','credit_card'])->default('cash');
-            $table->string('reference_number',255)->nullable();
+            $table->decimal('amount', 12, 2)->default(0);
+            $table->enum('payment_method', ['cash', 'bank_transfer', 'credit_card'])->default('cash');
+            $table->string('reference_number', 255)->nullable();
             $table->timestamp('paid_at')->nullable();
             $table->timestamps();
         });

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Invoice extends Model
 {
     use Companies;
-    
+
     protected $fillable = [
         'contract_id',
         'invoice_number',
@@ -27,11 +27,13 @@ class Invoice extends Model
         'status' => InvoiceStatus::class,
     ];
 
-    public function contract() : BelongsTo {
+    public function contract(): BelongsTo
+    {
         return $this->belongsTo(Contract::class);
     }
-    
-    public function payments() : HasMany{
+
+    public function payments(): HasMany
+    {
         return $this->hasMany(Payment::class);
     }
 }

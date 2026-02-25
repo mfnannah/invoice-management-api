@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contracts', function (Blueprint $table) {
-            $table->id();            
+            $table->id();
             $table->foreignId('tenant_id')->constrained('companies')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('unit_name',100);
-            $table->string('customer_name',100);
-            $table->decimal('rent_amount',12,2)->default(0);
+            $table->string('unit_name', 100);
+            $table->string('customer_name', 100);
+            $table->decimal('rent_amount', 12, 2)->default(0);
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
-            $table->enum('status',['draft','active','expired','terminated'])->default('draft');
+            $table->enum('status', ['draft', 'active', 'expired', 'terminated'])->default('draft');
             $table->timestamps();
         });
     }

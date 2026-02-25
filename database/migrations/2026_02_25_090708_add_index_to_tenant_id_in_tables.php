@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-             $table->index('tenant_id');
+            $table->index('tenant_id');
         });
         Schema::table('contracts', function (Blueprint $table) {
-             $table->index('tenant_id');
+            $table->index('tenant_id');
         });
         Schema::table('invoices', function (Blueprint $table) {
-             $table->index('tenant_id');
+            $table->index('tenant_id');
         });
         Schema::table('payments', function (Blueprint $table) {
-             $table->index('tenant_id');
+            $table->index('tenant_id');
         });
     }
 };
