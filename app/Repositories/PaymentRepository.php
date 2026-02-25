@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Payment;
 use App\Repositories\Contracts\PaymentRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class PaymentRepository implements PaymentRepositoryInterface
 {
@@ -17,9 +18,9 @@ class PaymentRepository implements PaymentRepositoryInterface
         return Payment::create($data);
     }
 
-    public function getByInvoiceId(int $invoiceId): array
+    public function getByInvoiceId(int $invoiceId): Collection
     {
-        return Payment::where('invoice_id', $invoiceId)->get()->toArray();
+        return Payment::where('invoice_id', $invoiceId)->get();
     }
 
     public function getByTenantId(int $tenantId): array

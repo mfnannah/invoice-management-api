@@ -3,6 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Models\Payment;
+use Illuminate\Database\Eloquent\Collection;
 
 interface PaymentRepositoryInterface
 {
@@ -10,7 +11,7 @@ interface PaymentRepositoryInterface
 
     public function create(array $data): Payment;
 
-    public function getByInvoiceId(int $invoiceId): array;
+    public function getByInvoiceId(int $invoiceId): Collection;
 
     public function getByTenantId(int $tenantId): array;
 }
