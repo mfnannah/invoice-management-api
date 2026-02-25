@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\Taxes\Interface\TaxCalculatorInterface;
 use App\Services\Taxes\MunicipalFeeCalculator;
 use App\Services\Taxes\TourismTaxCalculator;
 use App\Services\Taxes\VATTaxCalculator;
@@ -25,7 +24,6 @@ class TaxServiceProvider extends ServiceProvider
 
             return new TaxService($calculators);
         });
-        $this->app->bind(TaxCalculatorInterface::class, VATTaxCalculator::class);
     }
 
     /**
