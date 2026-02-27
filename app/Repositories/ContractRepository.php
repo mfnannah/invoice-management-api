@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Contract;
 use App\Repositories\Contracts\ContractRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class ContractRepository implements ContractRepositoryInterface
 {
@@ -17,8 +18,8 @@ class ContractRepository implements ContractRepositoryInterface
         return Contract::create($data);
     }
 
-    public function getByTenantId(int $tenantId): array
+    public function getByTenantId(int $tenantId): Collection
     {
-        return Contract::where('tenant_id', $tenantId)->get()->toArray();
+        return Contract::where('tenant_id', $tenantId)->get();
     }
 }

@@ -9,10 +9,10 @@ use App\Enums\InvoiceStatus;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Repositories\Contracts\ContractRepositoryInterface;
-use App\Repositories\Contracts\InvoiceRepositoryInterface;
-use App\Repositories\Contracts\PaymentRepositoryInterface;
-use App\Services\Invoices\InvoiceNumberService;
+use App\Repositories\Invoices\InvoiceRepositoryInterface;
+use App\Repositories\Payments\PaymentRepositoryInterface;
 use App\Services\Taxes\VATTaxCalculator;
+use Carbon\Carbon;
 use DomainException;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +53,8 @@ class InvoiceService
                 'tax_amount' => $taxAmount,
                 'total' => $total,
                 'status' => InvoiceStatus::PENDING,
-                'due_date' => $dto->due_date,
+                'due_date' => Carbon::parse($dto->due_date)->format('Y-m-d'),
+                'paid_at' => now()->format('Y-m-d'),
             ]);
         });
     }
@@ -83,7 +84,7 @@ class InvoiceService
                 'tenant_id' => $invoice->tenant_id,
                 'invoice_id' => $invoice->id,
                 'amount' => $dto->amount,
-                'payment_date' => $dto->payment_date,
+                'paid_at' => Carbon::parse($dto->paid_at)->format('Y-m-d'),
                 'payment_method' => $dto->payment_method,
             ]);
 
@@ -117,9 +118,12 @@ class InvoiceService
         });
 
         return [
+            'contract_id' => $contractId,
             'total_invoiced' => $totalInvoiced,
             'total_paid' => $totalPaid,
             'outstanding' => $totalInvoiced - $totalPaid,
+            'invoices_count' => collect($invoices)->count(),
+            'latest_invoice_date' => Carbon::parse(collect($invoices)->max('created_at'))->format('Y-m-d'),
         ];
     }
 }

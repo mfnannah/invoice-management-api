@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Invoice;
-use App\Repositories\Contracts\InvoiceRepositoryInterface;
+use App\Repositories\Invoices\InvoiceRepositoryInterface;
 
 class InvoiceRepository implements InvoiceRepositoryInterface
 {

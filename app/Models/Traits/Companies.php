@@ -27,6 +27,6 @@ trait Companies
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'tenant_id');
     }
 }

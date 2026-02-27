@@ -10,17 +10,17 @@ class RecordPaymentDTO
         public readonly int $invoice_id,
         public readonly float $amount,
         public readonly string $payment_method,
-        public readonly string $payment_date,
+        public readonly string $paid_at,
         public readonly ?string $reference_number = null,
     ) {}
 
-    public static function fromRequest(StorePaymentRequest $request): self
+    public static function fromRequest(StorePaymentRequest $request, $invoice): self
     {
         return new self(
-            invoice_id: $request->validated('invoice_id'),
+            invoice_id: $invoice->id,
             amount: (float) $request->validated('amount'),
             payment_method: $request->validated('payment_method'),
-            payment_date: $request->validated('payment_date'),
+            paid_at: $request->validated('paid_at'),
             reference_number: $request->validated('reference_number') ?? null,
         );
     }

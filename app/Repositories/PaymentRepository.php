@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Payment;
-use App\Repositories\Contracts\PaymentRepositoryInterface;
+use App\Repositories\Payments\PaymentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class PaymentRepository implements PaymentRepositoryInterface

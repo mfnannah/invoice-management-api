@@ -4,10 +4,10 @@ namespace App\Providers;
 
 use App\Repositories\ContractRepository;
 use App\Repositories\Contracts\ContractRepositoryInterface;
-use App\Repositories\Contracts\InvoiceRepositoryInterface;
-use App\Repositories\Contracts\PaymentRepositoryInterface;
 use App\Repositories\InvoiceRepository;
+use App\Repositories\Invoices\InvoiceRepositoryInterface;
 use App\Repositories\PaymentRepository;
+use App\Repositories\Payments\PaymentRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider

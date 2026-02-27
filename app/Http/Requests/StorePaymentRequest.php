@@ -16,8 +16,6 @@ class StorePaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'tenant_id' => ['required', 'integer', 'exists:companies,id'],
-            'invoice_id' => ['required', 'integer', 'exists:invoices,id'],
             'amount' => ['required', 'numeric', 'min:0.01'],
             'payment_method' => ['required', Rule::in(array_column(PaymentMethod::cases(), 'value'))],
             'reference_number' => ['nullable', 'string', 'max:255'],

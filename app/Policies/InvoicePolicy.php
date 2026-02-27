@@ -31,4 +31,9 @@ class InvoicePolicy
 
         return true;
     }
+
+    public function viewAny(User $user, Invoice $invoice): bool
+    {
+        return true;
+    }
 }

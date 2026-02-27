@@ -3,6 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Models\Contract;
+use Illuminate\Database\Eloquent\Collection;
 
 interface ContractRepositoryInterface
 {
@@ -10,5 +11,5 @@ interface ContractRepositoryInterface
 
     public function create(array $data): Contract;
 
-    public function getByTenantId(int $tenantId): array;
+    public function getByTenantId(int $tenantId): Collection;
 }
